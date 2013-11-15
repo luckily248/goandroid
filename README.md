@@ -1,7 +1,7 @@
 goandroid
 =========
 
-Patches to the Go tools and runtime to enable Android apps to interface directly with a shared library written in Go. Goandroid also includes two demos, `hellogl2` and `nativeactivity`, both written in Go.
+Patches to the Go tools and runtime to enable Android apps to interface directly with a shared library written in Go. Goandroid also includes two demos, `hellogl2` and `nativeactivity`, both written in Go. Goandroid currently runs on ARMv7 or later CPUs.
 
 Running [Go](http://golang.org) code from Android apps is currently not possible, because the Go tools can only output executables while Android requires any foreign code in shared library (.so) format. This repository contains patches for the Go tools and runtime to enable shared library output, including workarounds to Android specific limitations.
 
@@ -53,7 +53,7 @@ This guide is tested on linux/amd64 and assumes you have an android device conne
 
 If everything is set up correctly, you should be able to `cd hello-gl2` and run `build.sh` to build and copy `libgoandroid.so` to android/libs. Then, running `ant -f android/build.xml clean debug install` will build and install the final apk to the connected device. Running the app should display a simple color animated triangle that you can move around the screen with your finger.
 
-A more complicated but also more useful example is `nativeactivity`. It mimicks the C/C++ `native_app_glue` library and uses the NativeActivity API to completely avoid Java code and gain control of the input and render loop as well as context creation through EGL. It can be compiled and installed in the same way as `hellogl2` with `./build.sh` and `ant -f android/build.xml clean debug install`
+A more complicated but also more useful example is `nativeactivity`. It mimicks the C/C++ `native_app_glue` library and uses the NativeActivity API to completely avoid Java code and gain control of the input and render loop as well as context creation through EGL. It can be compiled and installed in the same way as `hellogl2` with `./build.sh` and `ant -f android/build.xml clean debug install`. The nativeactivity sample requires Android 2.3, which is the version where NativeActivity were introduced.
 
 An interesting artifact of Go apps is that the compile-deploy cycle can be shorter than the ant scripts. If an existing debug apk is already present after an `ant -f android/build.xml clean debug install` you can use `./upload.sh` to replace the Go library and upload the apk to the device. On my system, `touch src/nativeactivity/main.go android/AndroidManifest.xml && time ./build.sh && time ant -f android/build.xml debug install` takes 17 seconds, while `touch src/nativeactivity/main.go && time ./upload.sh` takes 10 seconds. This difference will only be more exaggerated if the apk contains resources.
 
