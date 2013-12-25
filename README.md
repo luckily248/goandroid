@@ -22,7 +22,7 @@ This guide is tested on linux/amd64 and assumes you have an android device conne
 
 3. Clone the golang repository:
 
-	`hg clone https://code.google.com/p/go`
+	`hg clone -u release https://code.google.com/p/go`
 
 4. Copy the `patches` directory  to the `go/.hg` directory:
 
