@@ -5,7 +5,7 @@ Patches to the Go tools and runtime to enable Android apps to interface directly
 
 Running [Go](http://golang.org) code from Android apps is currently not possible, because the Go tools can only output executables while Android requires any foreign code in shared library (.so) format. This repository contains patches for the Go tools and runtime to enable shared library output, including workarounds to Android specific limitations.
 
-*Disclaimer*: Please note that the patches are unofficial, and while I hope the Go developers will eventually incorporate at least the patches not specific to Android, there's no guarantee they will.
+*Disclaimer*: Please note that the patches are unofficial, and while I hope the Go developers will eventually incorporate at least the patches not specific to Android, there's no guarantee they will. Also note that goandroid only includes the bare minimum to let Go run in Android apps. If you need a more comprehensive framework, check out [Mandala](https://github.com/remogatto/mandala)
 
 ### Set up ###
 
