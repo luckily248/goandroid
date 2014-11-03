@@ -1,3 +1,5 @@
+# Android support will appear in Go 1.4. This project is therefore obsolete and won't be updated.
+
 goandroid
 =========
 
